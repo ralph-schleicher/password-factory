@@ -1,0 +1,45 @@
+/* -*- mode: css -*- */
+/* grey 900 */
+/* grey 100 */
+body {
+  color: #212121;
+  background-color: white;
+  font-family: sans-serif;
+  padding: 2em;
+  min-width: 24em;
+  max-width: 44em;
+}
+.top {
+  margin-top: 0px;
+}
+.bottom {
+  margin-bottom: 0px;
+}
+span.symbol {
+  font-family: monospace;
+}
+div.form {
+  color: #212121;
+  background-color: #F5F5F5;
+  padding: 2em;
+}
+div.button {
+  text-align: center;
+}
+div.password {
+  color: #E65100;
+  background-color: white;
+  font-size: 175%;
+  font-weight: bold;
+  padding: 1em 0px;
+  width: 100%;
+  text-align: center;
+}
+a {
+  color: inherit;
+  background-color: transparent;
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+}

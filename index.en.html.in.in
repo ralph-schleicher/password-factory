@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Password Factory</title>
+  <!-- TMPL_VAR CSS -->
+ </head>
+ <body>
+  <h1 class="top">Password Factory</h1>
+
+  <p>Select the password length and character set und create a new
+   password by clicking on the <em>Generate</em> button.</p>
+
+  <div class="form">
+   <form action="/en/index.html" method="post">
+    <fieldset>
+     <legend>Length</legend>
+     <!-- TMPL_LOOP LENGTH -->
+     <input id="l<!-- TMPL_VAR VALUE -->" type="radio" name="quick" value="<!-- TMPL_VAR VALUE -->"<!-- TMPL_IF CHECKED --> checked<!-- /TMPL_IF -->>
+     <label for="l<!-- TMPL_VAR VALUE -->">
+      <!-- TMPL_IF QUICK -->
+      <!-- TMPL_VAR VALUE --> characters
+      <!-- TMPL_ELSE -->
+      User defined:
+      <select name="length">
+       <!-- TMPL_LOOP LENGTH -->
+       <option value="<!-- TMPL_VAR VALUE -->"<!-- TMPL_IF CHECKED --> selected<!-- /TMPL_IF -->><!-- TMPL_VAR VALUE --></option>
+       <!-- /TMPL_LOOP -->
+      </select>
+      <!-- /TMPL_IF -->
+     </label><br>
+     <!-- /TMPL_LOOP -->
+    </fieldset>
+    <p></p>
+    <fieldset>
+     <legend>Character Set</legend>
+     <input id="upperp" type="checkbox" name="upperp"<!-- TMPL_IF UPPERP --> checked<!-- /TMPL_IF -->>
+     <label for="upperp">Capital letters ‘A’ to ‘Z’</label><br>
+     <input id="lowerp" type="checkbox" name="lowerp"<!-- TMPL_IF LOWERP --> checked<!-- /TMPL_IF -->>
+     <label for="lowerp">Small letters ‘a’ to ‘z’</label><br>
+     <input id="digitp" type="checkbox" name="digitp"<!-- TMPL_IF DIGITP --> checked<!-- /TMPL_IF -->>
+     <label for="digitp">Digits ‘0’ to ‘9’</label><br>
+     <input id="otherp" type="checkbox" name="otherp"<!-- TMPL_IF OTHERP --> checked<!-- /TMPL_IF -->>
+     <label for="otherp">Others<br>
+      <p>Select the characters to be included from the following list.
+       Multiple selections are possible.</p>
+      <p>
+       <select size="8" name="other" multiple> <!-- 32 symbols -->
+        <!-- TMPL_LOOP OTHER -->
+        <option value="<!-- TMPL_VAR CODE -->"<!-- TMPL_IF CHECKED --> selected<!-- /TMPL_IF -->><span class="other">&#<!-- TMPL_VAR CODE -->;</span>&nbsp;<!-- TMPL_VAR NAME --></option>
+        <!-- /TMPL_LOOP -->
+       </select>
+      </p>
+     </label>
+     <input id="excludep" type="checkbox" name="excludep"<!-- TMPL_IF EXCLUDEP --> checked<!-- /TMPL_IF -->>
+     <label for="excludep">Exclude characters<br>
+      <p>Enter the characters to be excluded in the following field.</p>
+      <p>
+       <input type="edit" maxlength="128" name="exclude" value="<!-- TMPL_VAR EXCLUDE-STRING -->">
+      </p>
+     </label>
+     <input id="letterp" type="checkbox" name="letterp"<!-- TMPL_IF LETTERP --> checked<!-- /TMPL_IF -->>
+     <label for="letterp">First character has to be a letter</label><br>
+    </fieldset>
+    <div class="button">
+     <p><input type="submit" value="Generate"></p>
+    </div>
+   </form>
+   <p>Your password
+    <!-- TMPL_IF ENTROPY --> with
+    <!-- TMPL_VAR ENTROPY -->&nbsp;bit entropy
+    <!-- /TMPL_IF -->
+    is:</p>
+   <div class="password">
+    <code><!-- TMPL_IF PASSWORD --><!-- TMPL_VAR PASSWORD --><!-- TMPL_ELSE -->&nbsp;<!-- /TMPL_IF --></code>
+   </div>
+   <form action="/en/index.html" method="post">
+    <input type="hidden" name="clear" value="on">
+    <div class="button">
+     <p><input type="submit" value="Clear"></p>
+    </div>
+   </form>
+  </div>
+ </body>
+</html>

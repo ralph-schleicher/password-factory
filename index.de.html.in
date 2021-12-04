@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Kennwortmanufaktur</title>
+  <style type="text/css">
+   body{color:#212121;background-color:#fff;font-family:sans-serif;padding:2em;min-width:24em;max-width:44em}
+   .top{margin-top:0}
+   .bottom{margin-bottom:0}
+   span.symbol{font-family:monospace}
+   div.form{color:#212121;background-color:#F5F5F5;padding:2em}
+   div.button{text-align:center}
+   div.password{color:#E65100;background-color:#fff;font-size:175%;font-weight:700;padding:1em 0;width:100%;text-align:center}
+   a{color:inherit;background-color:transparent;text-decoration:none}
+   table{border-collapse:collapse}
+  </style>
+ </head>
+ <body>
+  <h1 class="top">Kennwortmanufaktur</h1>
+  <p>Wähle die Kennwortlänge und den Zeichensatz aus und erzeuge ein
+   neues Kennwort indem du auf den <em>Erzeugen</em> Knopf drückst.</p>
+  <div class="form">
+   <form action="/de/index.html" method="post">
+    <fieldset>
+     <legend>Kennwortlänge</legend>
+     <!-- TMPL_LOOP LENGTH -->
+     <input id="l<!-- TMPL_VAR VALUE -->" type="radio" name="quick" value="<!-- TMPL_VAR VALUE -->"<!-- TMPL_IF CHECKED --> checked<!-- /TMPL_IF -->>
+     <label for="l<!-- TMPL_VAR VALUE -->">
+      <!-- TMPL_IF QUICK -->
+      <!-- TMPL_VAR VALUE --> Zeichen
+      <!-- TMPL_ELSE -->
+      Benutzerdefiniert:
+      <select name="length">
+       <!-- TMPL_LOOP LENGTH -->
+       <option value="<!-- TMPL_VAR VALUE -->"<!-- TMPL_IF CHECKED --> selected<!-- /TMPL_IF -->><!-- TMPL_VAR VALUE --></option>
+       <!-- /TMPL_LOOP -->
+      </select>
+      <!-- /TMPL_IF -->
+     </label><br>
+     <!-- /TMPL_LOOP -->
+    </fieldset>
+    <p></p>
+    <fieldset>
+     <legend>Zeichensatz</legend>
+     <input id="upperp" type="checkbox" name="upperp"<!-- TMPL_IF UPPERP --> checked<!-- /TMPL_IF -->>
+     <label for="upperp">Großbuchstaben ‘A’ bis ‘Z’</label><br>
+     <input id="lowerp" type="checkbox" name="lowerp"<!-- TMPL_IF LOWERP --> checked<!-- /TMPL_IF -->>
+     <label for="lowerp">Kleinbuchstaben ‘a’ bis ‘z’</label><br>
+     <input id="digitp" type="checkbox" name="digitp"<!-- TMPL_IF DIGITP --> checked<!-- /TMPL_IF -->>
+     <label for="digitp">Ziffern ‘0’ to ‘9’</label><br>
+     <input id="otherp" type="checkbox" name="otherp"<!-- TMPL_IF OTHERP --> checked<!-- /TMPL_IF -->>
+     <label for="otherp">Sonstige<br>
+      <p>Wähle die zusätzlichen Zeichen aus der folgenden Liste aus.
+       Eine Mehrfachauswahl ist möglich.</p>
+      <p>
+       <select size="8" name="other" multiple> <!-- 32 symbols -->
+        <!-- TMPL_LOOP OTHER -->
+        <option value="<!-- TMPL_VAR CODE -->"<!-- TMPL_IF CHECKED --> selected<!-- /TMPL_IF -->><span class="other">&#<!-- TMPL_VAR CODE -->;</span>&nbsp;<!-- TMPL_VAR NAME --></option>
+        <!-- /TMPL_LOOP -->
+       </select>
+      </p>
+     </label>
+     <input id="excludep" type="checkbox" name="excludep"<!-- TMPL_IF EXCLUDEP --> checked<!-- /TMPL_IF -->>
+     <label for="excludep">Zeichen ausschließen<br>
+      <p>Gib die Zeichen die nicht vorkommen sollen in das folgende
+       Feld ein.</p>
+      <p>
+       <input type="edit" maxlength="128" name="exclude" value="<!-- TMPL_VAR EXCLUDE-STRING -->">
+      </p>
+     </label>
+     <input id="letterp" type="checkbox" name="letterp"<!-- TMPL_IF LETTERP --> checked<!-- /TMPL_IF -->>
+     <label for="letterp">Das erste Zeichen muss ein Buchstabe sein</label><br>
+    </fieldset>
+    <div class="button">
+     <p><input type="submit" value="Erzeugen"></p>
+    </div>
+   </form>
+   <p>Dein Kennwort
+    <!-- TMPL_IF ENTROPY --> mit
+    <!-- TMPL_VAR ENTROPY -->&nbsp;bit Entropie
+    <!-- /TMPL_IF -->
+    lautet:</p>
+   <div class="password">
+    <code><!-- TMPL_IF PASSWORD --><!-- TMPL_VAR PASSWORD --><!-- TMPL_ELSE -->&nbsp;<!-- /TMPL_IF --></code>
+   </div>
+   <form action="/de/index.html" method="post">
+    <input type="hidden" name="clear" value="on">
+    <div class="button">
+     <p><input type="submit" value="Löschen"></p>
+    </div>
+   </form>
+  </div>
+ </body>
+</html>
