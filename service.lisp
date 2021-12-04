@@ -472,17 +472,4 @@ Value is a property list suitable for use with
   (when (and https-server (not (hunchentoot:started-p https-server)))
     (hunchentoot:start https-server)))
 
-#-(and)
-(progn
-  (setf hunchentoot:*show-lisp-errors-p* t)
-  (setf hunchentoot:*show-lisp-backtraces-p* t)
-  (setf *http-port* 5776)
-  (setf *https-port* 5777)
-  (setf *redirect-http-to-https* nil)
-  (setf http-server nil)
-  (setf https-server nil)
-  (start-service)
-  (stop-service)
-  (values))
-
 ;;; password-factory.lisp ends here
