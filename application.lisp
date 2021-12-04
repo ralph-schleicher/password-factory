@@ -1,4 +1,4 @@
-;;; application.lisp --- standalone application.
+;;; application.lisp --- standalone application
 
 ;; Copyright (C) 2020 Ralph Schleicher
 

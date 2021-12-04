@@ -1,6 +1,6 @@
 #! /bin/sh
 
-## bootstrap.sh --- update all configuration files.
+## bootstrap.sh --- update all configuration files
 
 # Copyright (C) 2014 Ralph Schleicher
 

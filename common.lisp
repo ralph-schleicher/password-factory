@@ -1,4 +1,4 @@
-;;; common.lisp --- utility definitions.
+;;; common.lisp --- utility definitions
 
 ;; Copyright (C) 2020 Ralph Schleicher
 

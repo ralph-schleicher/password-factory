@@ -1,4 +1,4 @@
-;;; password.lisp --- password generator.
+;;; password.lisp --- password generator
 
 ;; Copyright (C) 2020 Ralph Schleicher
 

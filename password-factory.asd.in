@@ -1,4 +1,4 @@
-;;; password-factory.asd --- a web service for generating passwords.
+;;; password-factory.asd --- a web service for generating passwords
 
 ;; Copyright (C) 2020 Ralph Schleicher
 

@@ -1,4 +1,4 @@
-;;; password-factory.lisp --- a web service for generating passwords.
+;;; password-factory.lisp --- a web service for generating passwords
 
 ;; Copyright (C) 2020 Ralph Schleicher
 

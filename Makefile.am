@@ -1,4 +1,4 @@
-## Makefile.am --- make file for the password factory.
+## Makefile.am --- make file for the password factory
 
 # Copyright (C) 2020 Ralph Schleicher
 

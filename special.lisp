@@ -1,4 +1,4 @@
-;;; special.lisp --- special variables.
+;;; special.lisp --- special variables
 
 ;; Copyright (C) 2020 Ralph Schleicher
 
