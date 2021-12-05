@@ -77,7 +77,7 @@ Usage: ~A [OPTION...]
 
 The password factory application is a web service for generating random
 passwords.  After starting the program, open a web browser and visit
-‘http://localhost:5776’ or ‘https://localhost:5777’.  Sending the process
+‘http://127.0.0.1:5776’ or ‘https://127.0.0.1:5777’.  Sending the process
 a HUP signal restarts the web service; a INT, QUIT, or TERM signal stops
 the web service.
 
@@ -90,7 +90,7 @@ Options:
                     disables the HTTPS server.  Default is 5777.
   --ssl-certificate-file=FILENAME
                     SSL certificate file name for the HTTPS server.
-                    Default is ‘example.crt’ in the current working
+                    Default is ‘example.pem’ in the current working
                     directory.
   --ssl-private-key-file=FILENAME
                     SSL private key file name for the HTTPS server.
