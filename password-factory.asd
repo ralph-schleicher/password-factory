@@ -39,7 +39,7 @@
   :description "A web service for generating passwords."
   :author "Ralph Schleicher <rs@ralph-schleicher.de>"
   :license "Modified BSD License"
-  :version "1.0"
+  :version "1.0.1"
   :depends-on (:uiop
 	       :iterate
 	       :alexandria
