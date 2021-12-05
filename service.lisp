@@ -449,12 +449,7 @@ Value is a property list suitable for use with
   ;; Initialize the dispatch table.
   (setf hunchentoot:*dispatch-table* (list
 				      ;; Landing page.
-				      #'static-dispatcher
-				      ;; REST API.  This has to be
-				      ;; the last element since Snooze
-				      ;; signals an error if no route
-				      ;; matches.
-				      (snooze:make-hunchentoot-app)))
+				      #'static-dispatcher))
   ;; If HTTP redirection is enabled, it has to be the first element.
   (when (and *redirect-http-to-https* http-server https-server)
     (push #'redirect-dispatcher hunchentoot:*dispatch-table*))
