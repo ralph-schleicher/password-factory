@@ -47,8 +47,6 @@
 	       :hunchentoot
 	       :html-template
 	       :cl-who
-	       :snooze
-	       :cl-json
 	       :cl-async
 	       :rs-cll)
   :serial t
