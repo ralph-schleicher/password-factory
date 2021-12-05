@@ -444,16 +444,8 @@ Value is a property list suitable for use with
   ;; Stop the servers.
   (stop-service)
   ;; Create the servers.
-  (cond ((null *http-port*)
-	 (setf http-server nil))
-	((or (null http-server)
-	     (/= (hunchentoot:acceptor-port http-server) *http-port*))
-	 (setf http-server (make-http-server))))
-  (cond ((null *https-port*)
-	 (setf https-server nil))
-	((or (null https-server)
-	     (/= (hunchentoot:acceptor-port https-server) *https-port*))
-	 (setf https-server (make-https-server))))
+  (setf http-server (when *http-port* (make-http-server)))
+  (setf https-server (when *https-port* (make-https-server)))
   ;; Initialize the dispatch table.
   (setf hunchentoot:*dispatch-table* (list
 				      ;; Landing page.
