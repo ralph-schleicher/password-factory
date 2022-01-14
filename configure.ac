@@ -78,7 +78,7 @@ AC_SUBST([GROUP])
 ax_ssl_cert_file=example.pem
 AC_ARG_WITH([ssl-cert-file], AC_HELP_STRING([--with-ssl-cert-file=NAME], [SSL certificate file name]),
 [case $withval in
-  [\\/]* | ?:[\\/]*) # absolute
+  [[\\/]]* | ?:[[\\/]]*) # absolute
     if test -f $withval
     then
 	:
@@ -87,7 +87,7 @@ AC_ARG_WITH([ssl-cert-file], AC_HELP_STRING([--with-ssl-cert-file=NAME], [SSL ce
     fi
     ax_ssl_cert_file=$withval
     ;;
-  *[\\/]* | yes | no)
+  *[[\\/]]* | yes | no)
     AC_MSG_ERROR([invalid value '$withval' for --with-ssl-cert-file])
     ;;
   *)
@@ -99,7 +99,7 @@ AC_MSG_RESULT([$ax_ssl_cert_file])
 ssl_cert_file=$ax_ssl_cert_file
 ssl_cert_path='$(package_service_confdir)/ssl/$(ssl_cert_file)'
 case $ax_ssl_cert_file in
-  [\\/]* | ?:[\\/]*) # absolute
+  [[\\/]]* | ?:[[\\/]]*) # absolute
     ssl_cert_file=
     ssl_cert_path=$ax_ssl_cert_file
     ;;
@@ -110,7 +110,7 @@ AC_SUBST([ssl_cert_path])
 ax_ssl_key_file=example.key
 AC_ARG_WITH([ssl-key-file], AC_HELP_STRING([--with-ssl-key-file=NAME], [SSL private key file name]),
 [case $withval in
-  [\\/]* | ?:[\\/]*) # absolute
+  [[\\/]]* | ?:[[\\/]]*) # absolute
     if test -f $withval
     then
 	:
@@ -119,7 +119,7 @@ AC_ARG_WITH([ssl-key-file], AC_HELP_STRING([--with-ssl-key-file=NAME], [SSL priv
     fi
     ax_ssl_key_file=$withval
     ;;
-  *[\\/]* | yes | no)
+  *[[\\/]]* | yes | no)
     AC_MSG_ERROR([invalid value '$withval' for --with-ssl-key-file])
     ;;
   *)
@@ -131,7 +131,7 @@ AC_MSG_RESULT([$ax_ssl_key_file])
 ssl_key_file=$ax_ssl_key_file
 ssl_key_path='$(package_service_confdir)/ssl/$(ssl_key_file)'
 case $ax_ssl_key_file in
-  [\\/]* | ?:[\\/]*) # absolute
+  [[\\/]]* | ?:[[\\/]]*) # absolute
     ssl_key_file=
     ssl_key_path=$ax_ssl_key_file
     ;;
