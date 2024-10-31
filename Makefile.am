@@ -160,6 +160,8 @@ style.css: style.css.in
 
 ### Maintenance
 
+TARNAME = $(PACKAGE)-$(VERSION)
+
 README.html: README.md
 	cd $(srcdir) ; \
 	markdown README.md > $@~ ; \
@@ -167,10 +169,23 @@ README.html: README.md
 
 check-local:
 	cd $(srcdir) ; \
-	quicklisp-check-build -sbcl -ccl password-factory
+	quicklisp-check-build -sbcl -ccl $(PACKAGE)
 
+.PHONY: tag
+tag: all
+	@if test 0 != `svn status -q | grep -v "^ " | wc -l` ; then \
+	    echo "Working copy is not clean" >&2 ; \
+	    exit 1 ; \
+	fi
+	@if svn info "^/tags/$(TARNAME)" > /dev/null 2>&1 ; then \
+	    echo "Tag already exists" >&2 ; \
+	    exit 1 ; \
+	fi
+	svn copy "^/trunk" "^/tags/$(TARNAME)" -m "Version $(VERSION)."
+
+.PHONY: sync
 sync: README.html
-	~/src/github/github.sh password-factory
+	~/src/github/github.sh $(PACKAGE)
 endif
 
 ## Makefile.am ends here
