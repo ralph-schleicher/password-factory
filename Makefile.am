@@ -43,21 +43,26 @@ common.lisp \
 password.lisp \
 special.lisp \
 service.lisp \
-application.lisp \
 $(nil)
 
 EXTRA_DIST = asd-components.sh
 BUILT_SOURCES = password-factory.asd password-factory.service
 CLEANFILES = password-factory.service
 
-password-factory$(EXEEXT): $(password_factory_SOURCES)
-	$(BUILDAPP) \
-	--asdf-tree $(srcdir) \
-	--load-system password-factory \
-	--entry password-factory:main \
-	--compress-core \
-	--output $@ \
-	|| rm -f $@
+password-factory$(EXEEXT): $(password_factory_SOURCES) application.lisp
+	rm -f $@
+	if test ! -f $@ ; then \
+	  $(SBCL) --noinform \
+	  --eval "(asdf:initialize-source-registry '(:source-registry (:tree \"$$PWD\") :inherit-configuration))" \
+	  --eval "(asdf:make \"password-factory/application\")" \
+	  --quit ; \
+	fi
+	if test ! -f $@ ; then \
+	  $(CCL) --quiet --batch \
+	  --eval "(asdf:initialize-source-registry '(:source-registry (:tree \"$$PWD\") :inherit-configuration))" \
+	  --eval "(asdf:make \"password-factory/application\")" ; \
+	fi
+	test -f $@
 
 password-factory.asd: $(srcdir)/password-factory.asd.in $(srcdir)/Makefile.in
 	cd $(srcdir) && \
