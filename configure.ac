@@ -5,7 +5,7 @@ AC_PREREQ([2.71])
 AC_INIT([password-factory],[1.0.2],[rs@ralph-schleicher.de])
 AM_INIT_AUTOMAKE([foreign no-define no-dependencies])
 
-AC_CONFIG_SRCDIR([package.lisp])
+AC_CONFIG_SRCDIR([packages.lisp])
 AC_CONFIG_FILES([Makefile])
 
 AC_CHECK_PROGS([SBCL], [sbcl], [true])

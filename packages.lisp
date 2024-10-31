@@ -1,4 +1,4 @@
-;;; package.lisp --- package definition
+;;; packages.lisp --- package definitions
 
 ;; Copyright (C) 2020 Ralph Schleicher
 
@@ -51,4 +51,4 @@
 	   #:main)
   (:documentation "A web service for generating passwords."))
 
-;;; package.lisp ends here
+;;; packages.lisp ends here

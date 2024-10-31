@@ -38,7 +38,7 @@ package_service_templ_DATA = index.en.html.in index.de.html.in
 
 password_factory_SOURCES = \
 password-factory.asd \
-package.lisp \
+packages.lisp \
 common.lisp \
 password.lisp \
 special.lisp \
