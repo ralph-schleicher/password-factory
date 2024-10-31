@@ -1,14 +1,15 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.50])
+AC_PREREQ([2.71])
 
-AC_INIT([password-factory], [1.0.1], [rs@ralph-schleicher.de])
+AC_INIT([password-factory],[1.0.2],[rs@ralph-schleicher.de])
 AM_INIT_AUTOMAKE([foreign no-define no-dependencies])
 
 AC_CONFIG_SRCDIR([package.lisp])
 AC_CONFIG_FILES([Makefile])
 
-AC_CHECK_PROGS([BUILDAPP], [buildapp], [true])
+AC_CHECK_PROGS([SBCL], [sbcl], [true])
+AC_CHECK_PROGS([CCL], [ccl], [true])
 AC_CHECK_PROGS([OPENSSL], [openssl], [true])
 AC_CHECK_PROGS([SYSTEMCTL], [systemctl], [true])
 AC_CHECK_PROGS([ID], [id], [true])
@@ -46,7 +47,7 @@ AC_SUBST([package_service_templdir])
 AC_SUBST([package_service_basedir])
 
 ax_user=www-data
-AC_ARG_WITH([user], AC_HELP_STRING([--with-user=NAME], [run service as user NAME [www-data]]),
+AC_ARG_WITH([user], AS_HELP_STRING([--with-user=NAME],[run service as user NAME [www-data]]),
 [case $withval in
   yes | no)
     AC_MSG_ERROR([invalid value '$withval' for --with-user])
@@ -61,7 +62,7 @@ USER=$ax_user
 AC_SUBST([USER])
 
 ax_group=www-data
-AC_ARG_WITH([group], AC_HELP_STRING([--with-group=NAME], [run service as group NAME [www-data]]),
+AC_ARG_WITH([group], AS_HELP_STRING([--with-group=NAME],[run service as group NAME [www-data]]),
 [case $withval in
   yes | no)
     AC_MSG_ERROR([invalid value '$withval' for --with-group])
@@ -76,7 +77,7 @@ GROUP=$ax_group
 AC_SUBST([GROUP])
 
 ax_ssl_cert_file=example.pem
-AC_ARG_WITH([ssl-cert-file], AC_HELP_STRING([--with-ssl-cert-file=NAME], [SSL certificate file name]),
+AC_ARG_WITH([ssl-cert-file], AS_HELP_STRING([--with-ssl-cert-file=NAME],[SSL certificate file name]),
 [case $withval in
   [[\\/]]* | ?:[[\\/]]*) # absolute
     if test -f $withval
@@ -108,7 +109,7 @@ AC_SUBST([ssl_cert_file])
 AC_SUBST([ssl_cert_path])
 
 ax_ssl_key_file=example.key
-AC_ARG_WITH([ssl-key-file], AC_HELP_STRING([--with-ssl-key-file=NAME], [SSL private key file name]),
+AC_ARG_WITH([ssl-key-file], AS_HELP_STRING([--with-ssl-key-file=NAME],[SSL private key file name]),
 [case $withval in
   [[\\/]]* | ?:[[\\/]]*) # absolute
     if test -f $withval
