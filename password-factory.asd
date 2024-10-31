@@ -50,7 +50,7 @@
 	       "cl-async"
 	       "rs-cll")
   :serial t
-  :components ((:file "package")
+  :components ((:file "packages")
 	       (:file "common")
 	       (:file "password")
 	       (:file "special")
