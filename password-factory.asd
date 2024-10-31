@@ -1,4 +1,4 @@
-;;; password-factory.asd --- a web service for generating passwords
+;;; password-factory.asd --- ASDF system definitions
 
 ;; Copyright (C) 2020 Ralph Schleicher
 
@@ -33,28 +33,37 @@
 
 ;;; Code:
 
-(in-package :common-lisp-user)
+(in-package :asdf-user)
 
-(asdf:defsystem :password-factory
+(defsystem "password-factory"
   :description "A web service for generating passwords."
   :author "Ralph Schleicher <rs@ralph-schleicher.de>"
   :license "Modified BSD License"
-  :version "1.0.1"
-  :depends-on (:uiop
-	       :iterate
-	       :alexandria
-	       :read-number
-	       :hunchentoot
-	       :html-template
-	       :cl-who
-	       :cl-async
-	       :rs-cll)
+  :version "1.0.2"
+  :depends-on ("uiop"
+	       "iterate"
+	       "alexandria"
+	       "read-number"
+	       "hunchentoot"
+	       "html-template"
+	       "cl-who"
+	       "cl-async"
+	       "rs-cll")
   :serial t
   :components ((:file "package")
 	       (:file "common")
 	       (:file "password")
 	       (:file "special")
-	       (:file "service")
-	       (:file "application")))
+	       (:file "service")))
+
+(defsystem "password-factory/application"
+  :description "The standalone application."
+  :author "Ralph Schleicher <rs@ralph-schleicher.de>"
+  :license "Modified BSD License"
+  :depends-on ("password-factory")
+  :components ((:file "application"))
+  :build-operation program-op
+  :build-pathname "password-factory"
+  :entry-point "password-factory:main")
 
 ;;; password-factory.asd ends here
